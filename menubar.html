@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        *{
+            margin-top: auto;
+            /*  removes unnecessary gap in the starting of the page*/
+        }
+        div{
+            background-color: aquamarine;
+            color: white;
+            font-size: 30px;
+
+        }
+        ul{
+            list-style: none;
+        }
+        .container{
+            display: none;
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: column;
+            display: none;
+            right: 0;
+            top: 0;
+            position: absolute;
+        }
+        .container>div{
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div>HOME</div>
+        <div>ABOUT US</div>
+        <div>CONTACT</div>
+        <div>SLIDE</div>
+    </div>
+    <button>TOGGLE</button>
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $(".container").slideToggle();//function(){
+                    // $(".container").css({
+                    //     "position":"absolute",
+                    //     "float":"right"
+                    // });
+                // })
+            })
+        })
+    </script>
+</body>
+</html>
