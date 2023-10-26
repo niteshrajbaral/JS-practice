@@ -45,6 +45,7 @@
     </div>
     <script>
         let click=1;
+        
         $(document).ready(function(){
             $(".left").click(function(){
                 click=click-1;
@@ -52,15 +53,26 @@
                     click=4;
                 }
                 $(".slideImg").attr('src','img'+click+'.jpg');
-            })
+            });
+            
             $(".right").click(function(){
                 click=click+1;
                 if(click==5){
                     click=1;
                 }
                 $(".slideImg").attr('src','img'+click+'.jpg');
-            })
-        })
+            });
+            setInterval(clickRight,3000);
+            function clickRight(){
+                click=click+1;
+                if(click==5){
+                    click=1;
+                }
+                $(".slideImg").attr('src','img'+click+'.jpg');
+            };
+        });
+        
+        
     </script>
     <a href="menubar.html">menubar html</a>
     <a href="index.html"> Drag and drop</a>
