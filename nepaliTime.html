@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEPALI DATETIME</title>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nepali-date-converter/dist/nepali-date-converter.umd.js">   </script>
+</head>
+<body>
+    <div>
+        <p class="date"></p>
+        <p class="time"></p>
+        <p class="day"></p>
+        <p class="nepDate"></p>
+    </div>
+    <script>
+        
+        function dateTime(){
+            var d= new Date();
+                var ddate= "Date : "+d.getFullYear()+"/"+d.getMonth()+"/"+d.getDay();
+                var dtime="Time : "+"  "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+                var day=d.getDay();
+                
+                if (day==0){
+                    dday="Sunday";
+                }else if(day==1){
+                    dday="Monday";
+                }else if(day==2){
+                    dday="Tuesday";
+                }else if(day==3){
+                    dday="Wednesday";
+                }else if(day==4){
+                    dday="Thrusday";
+                }else if(day==5){
+                    dday="Friday";
+                }else if(day==6){
+                    dday="Saturday";
+                }
+                 $('.date').text(ddate);
+                 $('.time').text(dtime);
+                 $('.day').text(dday);
+            }
+            function nepDate(){
+                let date1 = new NepaliDate(new Date());
+                date1.format('ddd, DD MMMM YYYY'); 
+                $('.nepDate').text(date1);
+            }
+        $(document).ready(function(){
+            
+            setInterval(dateTime,1000);
+            setInterval(nepDate,1000);
+        })
+            
+        // Javascript Date object
+        // new NepaliDate(2051, 5, 24).toJsDate();
+    </script>
+    <br>
+    <a href="menubar.html">1. menubar html</a><br>
+    <a href="index.html"> 2. Drag and drop</a><br>
+    <a href="slide.html">3. Carousal(Slides)</a><br>
+    <a href="nepaliTime.html">4. Nepali Date and time</a><br>
+</body>
+</html>
