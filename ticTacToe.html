@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        .frame{
+            width: 340px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+        }
+        .frame>div{
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            font-size: 30px;
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer;
+        }
+        .b1{
+            border-right: 5px solid black;
+            border-bottom: 5px solid black;
+        }
+        .b2{
+            border-right: 5px solid black;
+            border-bottom: 5px  solid black;
+        }
+        .b3{
+            border-bottom: 5px  solid black;
+        }
+        .b4{
+            border-right: 5px  solid black;
+            border-bottom: 5px  solid black;
+        }
+        .b5{
+            border-right: 5px  solid black;
+            border-bottom: 5px  solid black;
+        }
+        .b6{
+            border-bottom: 5px  solid black;
+        }
+        .b7{
+            border-right: 5px  solid black; 
+        }
+        .b8{
+            border-right: 5px  solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>WELCOME TO TIC TAC TOE</h1>
+    <div class="frame">
+        <div class="b1"><p></p></div>
+        <div class="b2"><p></p></div>
+        <div class="b3"><p></p></div>
+        <div class="b4"><p></p></div>
+        <div class="b5"><p></p></div>
+        <div class="b6"><p></p></div>
+        <div class="b7"><p></p></div>
+        <div class="b8"><p></p></div>
+        <div class="b9"><p></p></div>
+    </div>
+    <br>
+    <p class="turnText"></p>
+    <br>
+    <p class="winnerText"></p>
+    <br>
+   <button class="resetBtn">RESET</button>
+    <script>
+        turn=0;
+        function checkWinner(){
+            if ($(".b1 p").text()=="X"&& $(".b2 p" ).text()=="X"&& $(".b3 p").text()=="X"){
+                $(".frame>div").off("click"); 
+                $(".winnerText").text("Player X wins the GAME");
+            }
+            else if ($(".b1 p").text()=="X"&& $(".b4 p" ).text()=="X"&& $(".b7 p").text()=="X"){
+                $(".frame>div").off("click");
+                $(".winnerText").text("Player X wins the GAME");
+            }
+            else if ($(".b1 p").text()=="X"&& $(".b5 p" ).text()=="X"&& $(".b9 p").text()=="X"){
+                $(".frame>div").off("click");
+                $(".winnerText").text("Player X wins the GAME");
+            }
+            else if ($(".b4 p").text()=="X"&& $(".b5 p" ).text()=="X"&& $(".b6 p").text()=="X"){
+                $(".frame>div").off("click"); 
+                $(".winnerText").text("Player X wins the GAME");
+            }
+            else if ($(".b2 p").text()=="X"&& $(".b5 p" ).text()=="X"&& $(".b8 p").text()=="X"){
+                $(".frame>div").off("click"); 
+                $(".winnerText").text("Player X wins the GAME");
+            }
+            else if ($(".b3 p").text()=="X"&& $(".b6 p" ).text()=="X"&& $(".b9 p").text()=="X"){
+                $(".frame>div").off("click"); 
+                $(".winnerText").text("Player X wins the GAME");
+            }
+            else if ($(".b7 p").text()=="X"&& $(".b8 p" ).text()=="X"&& $(".b9 p").text()=="X"){
+                $(".frame>div").off("click"); 
+                $(".winnerText").text("Player X wins the GAME");
+            }
+            else if ($(".b1 p").text()=="O"&& $(".b2 p" ).text()=="O"&& $(".b3 p").text()=="O"){
+                $(".frame>div").off("click"); 
+                $(".winnerText").text("Player O wins the GAME");
+            }
+            else if ($(".b1 p").text()=="O"&& $(".b4 p" ).text()=="O"&& $(".b7 p").text()=="O"){
+                $(".frame>div").off("click");
+                $(".winnerText").text("Player O wins the GAME");
+            }
+            else if ($(".b1 p").text()=="O"&& $(".b5 p" ).text()=="O"&& $(".b9 p").text()=="O"){
+                $(".frame>div").off("click");
+                $(".winnerText").text("Player O wins the GAME");
+            }
+            else if ($(".b4 p").text()=="O"&& $(".b5 p" ).text()=="O"&& $(".b6 p").text()=="O"){
+                $(".frame>div").off("click");
+                $(".winnerText").text("Player O wins the GAME");
+            }
+            else if ($(".b2 p").text()=="O"&& $(".b5 p" ).text()=="O"&& $(".b8 p").text()=="O"){
+                $(".frame>div").off("click");
+                $(".winnerText").text("Player O wins the GAME");
+            }
+            else if ($(".b3 p").text()=="O"&& $(".b6 p" ).text()=="O"&& $(".b9 p").text()=="O"){
+                $(".frame>div").off("click"); 
+                $(".winnerText").text("Player O wins the GAME");
+            }
+            else if ($(".b7 p").text()=="O"&& $(".b8 p" ).text()=="O"&& $(".b9 p").text()=="O"){
+                $(".frame>div").off("click");
+                $(".winnerText").text("Player O wins the GAME");
+            }
+            else{
+                if(turn%2==0){
+                    $(".turnText").text("Player X turn");
+                }
+                else{
+                    $(".turnText").text("Player O turn");
+                }
+            }
+        }
+        
+        $(document).ready(function () {
+            $(".frame > div").one("click", function () {
+                if (turn % 2 === 0) {
+                    $(this).children("p").text("X");
+                } else {
+                    $(this).children("p").text("O");
+                }
+                turn++;
+                checkWinner();
+            });
+            $("button").click(function () {
+                location.reload(true);
+            });
+        });
+    </script>
+</body>
+</html>
+//another way
+// function checkWinner() {
+    //     const cells = [
+    //         $(".b1 p").text(),
+    //         $(".b2 p").text(),
+    //         $(".b3 p").text(),
+    //         $(".b4 p").text(),
+    //         $(".b5 p").text(),
+    //         $(".b6 p").text(),
+    //         $(".b7 p").text(),
+    //         $(".b8 p").text(),
+    //         $(".b9 p").text()
+    //     ];
+
+    //     const winningCombinations = [
+    //         [0, 1, 2],
+    //         [3, 4, 5],
+    //         [6, 7, 8],
+    //         [0, 3, 6],
+    //         [1, 4, 7],
+    //         [2, 5, 8],
+    //         [0, 4, 8],
+    //         [2, 4, 6]
+    //     ];
+
+    //     for (const combination of winningCombinations) {
+    //         const [a, b, c] = combination;
+    //         if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
+    //             $(".frame > div").off("click");
+    //             $(".winnerText").text(`Player ${cells[a]} wins the GAME`);
+    //             return; // Exit the loop if a winner is found
+    //         }
+    //     }
+
+    //     if (turn % 2 === 0) {
+    //         $(".turnText").text("Player X turn");
+    //     } else {
+    //         $(".turnText").text("Player O turn");
+    //     }
+    // }
