@@ -51,6 +51,9 @@
         .b8{
             border-right: 5px  solid black;
         }
+        .winnercell{
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -67,7 +70,7 @@
         <div class="b9"><p></p></div>
     </div>
     <br>
-    <p class="turnText"></p>
+    <p class="turnText">Player X turn</p>
     <br>
     <p class="winnerText"></p>
     <br>
@@ -78,58 +81,82 @@
             if ($(".b1 p").text()=="X"&& $(".b2 p" ).text()=="X"&& $(".b3 p").text()=="X"){
                 $(".frame>div").off("click"); 
                 $(".winnerText").text("Player X wins the GAME");
+                $(".b1,.b2,.b3").css("color","red");
             }
             else if ($(".b1 p").text()=="X"&& $(".b4 p" ).text()=="X"&& $(".b7 p").text()=="X"){
                 $(".frame>div").off("click");
                 $(".winnerText").text("Player X wins the GAME");
+                $(".b1,.b4,.b7").css("color","red");
             }
             else if ($(".b1 p").text()=="X"&& $(".b5 p" ).text()=="X"&& $(".b9 p").text()=="X"){
                 $(".frame>div").off("click");
                 $(".winnerText").text("Player X wins the GAME");
+                $(".b1,.b5,.b9").css("color","red");
             }
             else if ($(".b4 p").text()=="X"&& $(".b5 p" ).text()=="X"&& $(".b6 p").text()=="X"){
                 $(".frame>div").off("click"); 
                 $(".winnerText").text("Player X wins the GAME");
+                $(".b4,.b5,.b6").css("color","red");
             }
             else if ($(".b2 p").text()=="X"&& $(".b5 p" ).text()=="X"&& $(".b8 p").text()=="X"){
                 $(".frame>div").off("click"); 
                 $(".winnerText").text("Player X wins the GAME");
+                $(".b2,.b5,.b8").css("color","red");
             }
             else if ($(".b3 p").text()=="X"&& $(".b6 p" ).text()=="X"&& $(".b9 p").text()=="X"){
                 $(".frame>div").off("click"); 
                 $(".winnerText").text("Player X wins the GAME");
+                $(".b3,.b6,.b9").css("color","red");
             }
             else if ($(".b7 p").text()=="X"&& $(".b8 p" ).text()=="X"&& $(".b9 p").text()=="X"){
                 $(".frame>div").off("click"); 
                 $(".winnerText").text("Player X wins the GAME");
+                $(".b7,.b8,.b9").css("color","red");
+            }
+            else if ($(".b3 p").text()=="X"&& $(".b5 p" ).text()=="X"&& $(".b7 p").text()=="X"){
+                $(".frame>div").off("click"); 
+                $(".winnerText").text("Player X wins the GAME");
+                $(".b3,.b5,.b7").css("color","red");
             }
             else if ($(".b1 p").text()=="O"&& $(".b2 p" ).text()=="O"&& $(".b3 p").text()=="O"){
                 $(".frame>div").off("click"); 
                 $(".winnerText").text("Player O wins the GAME");
+                $(".b1,.b2,.b3").css("color","red");
             }
             else if ($(".b1 p").text()=="O"&& $(".b4 p" ).text()=="O"&& $(".b7 p").text()=="O"){
                 $(".frame>div").off("click");
                 $(".winnerText").text("Player O wins the GAME");
+                $(".b1,.b4,.b7").css("color","red");
             }
             else if ($(".b1 p").text()=="O"&& $(".b5 p" ).text()=="O"&& $(".b9 p").text()=="O"){
                 $(".frame>div").off("click");
                 $(".winnerText").text("Player O wins the GAME");
+                $(".b1,.b5,.b9").css("color","red");
             }
             else if ($(".b4 p").text()=="O"&& $(".b5 p" ).text()=="O"&& $(".b6 p").text()=="O"){
                 $(".frame>div").off("click");
                 $(".winnerText").text("Player O wins the GAME");
+                $(".b4,.b5,.b6").css("color","red");
             }
             else if ($(".b2 p").text()=="O"&& $(".b5 p" ).text()=="O"&& $(".b8 p").text()=="O"){
                 $(".frame>div").off("click");
                 $(".winnerText").text("Player O wins the GAME");
+                $(".b2,.b5,.b8").css("color","red");
             }
             else if ($(".b3 p").text()=="O"&& $(".b6 p" ).text()=="O"&& $(".b9 p").text()=="O"){
                 $(".frame>div").off("click"); 
                 $(".winnerText").text("Player O wins the GAME");
+                $(".b3,.b6,.b9").css("color","red");
             }
             else if ($(".b7 p").text()=="O"&& $(".b8 p" ).text()=="O"&& $(".b9 p").text()=="O"){
                 $(".frame>div").off("click");
                 $(".winnerText").text("Player O wins the GAME");
+                $(".b7,.b8,.b9").css("color","red");
+            }
+            else if ($(".b3 p").text()=="O"&& $(".b5 p" ).text()=="O"&& $(".b7 p").text()=="O"){
+                $(".frame>div").off("click"); 
+                $(".winnerText").text("Player O wins the GAME");
+                $(".b3,.b5,.b7").css("color","red");
             }
             else{
                 if(turn%2==0){
@@ -199,6 +226,7 @@ function checkWinner() {
             if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
                 $(".frame > div").off("click");
                 $(".winnerText").text(`Player ${cells[a]} wins the GAME`);
+                $(`.frame > div:eq(${a}), .frame > div:eq(${b}), .frame > div:eq(${c})`).addClass("winner-cell");
                 return; // Exit the loop if a winner is found
             }
         }
