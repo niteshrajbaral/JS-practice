@@ -7,29 +7,47 @@
     <style>
         
         .container{
-            border: 2px solid lightcoral;
-            border-radius: 5px;
+            border: 2px solid rgb(250, 247, 247);
+            border-radius: 10px;
             position: absolute;
             top: 0;
             bottom:0;
             left: 0;
             right: 0;
-            height: 350px;
+            /* height: 450px; */
             width: 500px;
+            max-height: fit-content;
             margin: auto;
-            background-color: sandybrown;
+            background-color: rgb(62, 188, 48);
+            padding: 5px 5px 15px 10px;
+            
 
+        }
+        .container>h1{
+            padding: 10px;
+            text-decoration: underline;
+            text-decoration-color: black;
         }
         .question{
             font-size: 25px;
             font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+            
+        }
+        .answers{
+            margin-top: 15px;
+            border-top: 3px solid white;
+        }
+        .answers>ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
         }
         .answers>ul>li{
             font-size: 17px;
             min-width: fit-content;
             border: 1px solid white;
             margin: 20px;
-            border-radius: 7px;
+            border-radius: 9px;
             display: block;
             padding : 5px;
             list-style: none;
@@ -47,13 +65,23 @@
             width: 140px;
             border: 2px solid white;
             background-color: antiquewhite;
+            border-radius: 12px;
             /* display: block; */
             
+        }
+        .answers>ul>li:hover{
+            background-color: black;
+            color: white;
+        }
+        .btn-container>button:hover{
+            background-color: rgb(58, 86, 180);
+            color: white;
         }
     </style>
 </head>
 <body background="IMG_2896_1.jpg">
     <div class="container">
+        <h1>English Quiz</h1>
         <div class="question"><span>1.</span>Question goes here</div>
         <div class="answers">
             <ul>
