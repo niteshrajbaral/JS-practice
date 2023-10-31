@@ -21,7 +21,8 @@
             width: 500px;
             max-height: fit-content;
             margin: auto;
-            background-color: rgb(62, 188, 48);
+            background-color: white;
+            /* background-color: rgb(62, 188, 48); */
             padding: 5px 5px 15px 10px;
             
 
@@ -38,7 +39,7 @@
         }
         .answers{
             margin-top: 15px;
-            border-top: 3px solid white;
+            border-top: 3px solid rgb(65, 24, 24);
         }
         .answers>ul{
             list-style-type: none;
@@ -52,7 +53,7 @@
             margin: 20px;
             border-radius: 9px;
             display: block;
-            padding : 5px;
+            padding : 10px 5px 5px 10px;
             list-style: none;
             background-color:silver;
             transition: all 0.4s;
@@ -69,12 +70,13 @@
             padding: 10px;
             width: 140px;
             border: 2px solid white;
-            background-color: antiquewhite;
+            background-color: silver;
+            
             border-radius: 12px;
             display: none;
             
         }
-        .answers>ul>li:hover{
+        .hovered:hover{
             
             background-color: black;
             color: white;
@@ -83,15 +85,9 @@
             background-color: rgb(58, 86, 180);
             color: white;
         }
-        /* .correct{
-            background-color: rgb(123, 244, 102);
-        }
-        .incorrect{
-            background-color: rgb(244, 116, 102);
-        } */
     </style>
 </head>
-<body background="IMG_2896_1.jpg">
+<body background="bc.png">
     <div class="container">
         <h1>English Quiz</h1>
         <div class="question"><span>1.</span>Question goes here</div>
@@ -171,31 +167,53 @@
                 $(".question").text(questionNo + ". " + currentQuestion.question);
                 $.each(currentQuestion.answers, function(index, answer) {
 
-                    var $answerItem = $('<li class="'+(answer.correct ? 'correct' : 'incorrect')+'">' + answer.text + '</li>');
+                    var $answerItem = $('<li class="'+(answer.correct ? 'correct' : 'incorrect')+' hovered">' + answer.text + '</li>');
                     $('.answers > ul').append($answerItem);
                 });
-                
+                currentQuestionIndex++;
             }
             function selectAnswers(){
                 let click=1;
-                $(".correct").click(function(){
-                    $(this ).css({
-                        'background-color': 'rgb(58, 86, 180)',
-                        'color':'white'
-                    });
-                    $(".btn-container>button").show();
-                })
                 $(".incorrect").click(function(){
                     $(this).css({
                         'background-color': 'rgb(244, 116, 102)',
-                        'color':'white'
+                        'color':'white',
+                        'border': '2px solid silver'
                     })
+                    $(".correct").css({
+                        'background-color': 'rgb(136, 243, 136)',
+                        'color':'black',
+                        'border': '2px solid silver'
+                    });
+                    $("ul li").off("click");
+                    $("ul li").removeClass("hovered");
                     $(".btn-container>button").show();
                 })
+                $(".correct").click(function(){
+                    $(this).css({
+                        'background-color': 'rgb(136, 243, 136)',
+                        'color':'black',
+                        'border': '2px solid silver'
+                    })
+                    score++;
+                    $("ul li").off("click");
+                    $("ul li").removeClass("hovered");
+                    $(".btn-container>button").show();
+                })
+            }
+            function handleNextButton(){
+                $('.answers > ul').empty();
+                showQuestion();
             }
             $(document).ready(function(){
                 startQuiz();
                 selectAnswers();
+                $(".btn-container button").click(function(){
+                    if(currentQuestionIndex==questions.length){
+                        currentQuestionIndex=0;
+                    }
+                    handleNextButton();
+                })
             })
     </script>
 </body>
