@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+
     <title>ENGLISH QUIZ</title>
     <style>
         
@@ -52,6 +55,8 @@
             padding : 5px;
             list-style: none;
             background-color:silver;
+            transition: all 0.4s;
+            cursor: pointer;
         }
         .btn-container{
             height:fit-content;
@@ -66,10 +71,11 @@
             border: 2px solid white;
             background-color: antiquewhite;
             border-radius: 12px;
-            /* display: block; */
+            display: none;
             
         }
         .answers>ul>li:hover{
+            
             background-color: black;
             color: white;
         }
@@ -77,6 +83,12 @@
             background-color: rgb(58, 86, 180);
             color: white;
         }
+        /* .correct{
+            background-color: rgb(123, 244, 102);
+        }
+        .incorrect{
+            background-color: rgb(244, 116, 102);
+        } */
     </style>
 </head>
 <body background="IMG_2896_1.jpg">
@@ -85,16 +97,106 @@
         <div class="question"><span>1.</span>Question goes here</div>
         <div class="answers">
             <ul>
-                <li>Option 1</li>
+                <!-- <li>Option 1</li>
                 <li>Option 2</li>
                 <li>Option 3</li>
-                <li>Option 4</li>
+                <li>Option 4</li> -->
             </ul>
         </div>
         <div class="btn-container">
-           <button>SUBMIT</button>
+           <button>NEXT >></button>
 
         </div>
     </div>
+    <script>
+        const questions = [
+            {
+                question: "Not only he ____ his father was also present.",
+                answers:[
+                    {text:"is", correct:false},
+                    {text:"but", correct: true},
+                    {text: "can",correct: false},
+                    {text: "also",correct:false},
+                ]
+            },
+            {
+                question: "You can _____ see the clouds in the sky.",
+                answers:[
+                    {text:"although", correct:false},
+                    {text:"since", correct: false},
+                    {text: "even",correct: true},
+                    {text: "have",correct:false},
+                ]
+            },
+            {
+                question: "Do not go ____nhe comes.",
+                answers:[
+                    {text:"Since", correct:false},
+                    {text:"till", correct: false},
+                    {text: "upto",correct: false},
+                    {text: "from",correct:true},
+                ]
+            },
+            {
+                question: " ____ he is ill, he cannot come.",
+                answers:[
+                    {text:"As", correct:true},
+                    {text:"For", correct: false},
+                    {text: "because",correct: false},
+                    {text: "like",correct:false},
+                ]
+            },
+            {
+                question: "You have opposed me,_____ I cannot help you.",
+                answers:[
+                    {text:"So", correct:false},
+                    {text:"Since", correct: false},
+                    {text: "For",correct: false},
+                    {text: "Therefore",correct:true},
+                ]
+            },]
+            let currentQuestionIndex=0;
+            let currentQuestion=0;
+            let score=0;
+
+            function startQuiz(){
+                currentQuestionIndex=0
+                currentQuestion=0;
+                score=0;
+                showQuestion(); 
+            }
+            function showQuestion(){
+                currentQuestion= questions[currentQuestionIndex];
+                let questionNo= currentQuestionIndex+ 1;
+                $(".question").text(questionNo + ". " + currentQuestion.question);
+                $.each(currentQuestion.answers, function(index, answer) {
+
+                    var $answerItem = $('<li class="'+(answer.correct ? 'correct' : 'incorrect')+'">' + answer.text + '</li>');
+                    $('.answers > ul').append($answerItem);
+                });
+                
+            }
+            function selectAnswers(){
+                let click=1;
+                $(".correct").click(function(){
+                    $(this ).css({
+                        'background-color': 'rgb(58, 86, 180)',
+                        'color':'white'
+                    });
+                    $(".btn-container>button").show();
+                })
+                $(".incorrect").click(function(){
+                    $(this).css({
+                        'background-color': 'rgb(244, 116, 102)',
+                        'color':'white'
+                    })
+                    $(".btn-container>button").show();
+                })
+            }
+            $(document).ready(function(){
+                startQuiz();
+                selectAnswers();
+            })
+    </script>
 </body>
 </html>
