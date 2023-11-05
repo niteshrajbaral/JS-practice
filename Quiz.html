@@ -184,16 +184,16 @@
                         'background-color': 'rgb(244, 116, 102)',
                         'color':'white',
                         'border': '2px solid silver',
-                        'cursor':'no-drop '
+                        
                     })
                     $(".correct").css({
                         'background-color': 'rgb(136, 243, 136)',
                         'color':'black',
                         'border': '2px solid silver',
-                        'cursor':'no-drop '
+                        
                     });
                     $(".incorrect,.correct").off("click");
-                    $(".incorrect,.correct").
+                    $(".incorrect,.correct").css({'cursor':'no-drop '});
                     $(".incorrect,.correct").removeClass("hovered");
                     $(".btn-container>button").show();
 
@@ -204,10 +204,11 @@
                         'background-color': 'rgb(136, 243, 136)',
                         'color':'black',
                         'border': '2px solid silver',
-                        'cursor':'no-drop '
+        
                     })
                     score++;
                     $(".incorrect,.correct").off("click");
+                    $(".incorrect,.correct").css({'cursor':'no-drop '});
                     $("ul li").removeClass("hovered");
                     $(".btn-container>button").show();
                 })
