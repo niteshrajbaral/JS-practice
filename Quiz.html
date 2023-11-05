@@ -10,7 +10,7 @@
     <style>
         
         .container{
-            border: 2px solid rgb(250, 247, 247);
+            border: 2px solid white;
             border-radius: 10px;
             position: absolute;
             top: 0;
@@ -39,7 +39,7 @@
         }
         .answers{
             margin-top: 15px;
-            border-top: 3px solid rgb(65, 24, 24);
+            border-top: 3px solid #411818;
         }
         .answers>ul{
             list-style-type: none;
@@ -80,9 +80,10 @@
             
             background-color: black;
             color: white;
+              
         }
         .btn-container>button:hover{
-            background-color: rgb(58, 86, 180);
+            background-color: #3a56b4;
             color: white;
         }
     </style>
@@ -182,22 +183,28 @@
                     $(this).css({
                         'background-color': 'rgb(244, 116, 102)',
                         'color':'white',
-                        'border': '2px solid silver'
+                        'border': '2px solid silver',
+                        'cursor':'no-drop '
                     })
                     $(".correct").css({
                         'background-color': 'rgb(136, 243, 136)',
                         'color':'black',
-                        'border': '2px solid silver'
+                        'border': '2px solid silver',
+                        'cursor':'no-drop '
                     });
                     $(".incorrect,.correct").off("click");
+                    $(".incorrect,.correct").
                     $(".incorrect,.correct").removeClass("hovered");
                     $(".btn-container>button").show();
+
+                    
                 })
                 $(".correct").click(function(){
                     $(this).css({
                         'background-color': 'rgb(136, 243, 136)',
                         'color':'black',
-                        'border': '2px solid silver'
+                        'border': '2px solid silver',
+                        'cursor':'no-drop '
                     })
                     score++;
                     $(".incorrect,.correct").off("click");
