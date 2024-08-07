@@ -11,52 +11,70 @@
             margin-top: auto;
             /*  removes unnecessary gap in the starting of the page*/
         }
-        div{
-            background-color: aquamarine;
-            color: white;
+        .menu{
             font-size: 30px;
-
-        }
-        ul{
-            list-style: none;
+            cursor: pointer;
+            background-color: black;
+            color: white;
+            width: 50px;
+            height: 50px;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            text-align: center;
+            z-index: 2;
         }
         .container{
-            display: none;
-            display: flex;
-            flex-wrap: nowrap;
-            flex-direction: column;
             display: none;
             right: 0;
             top: 0;
             position: absolute;
+            z-index: 1;
         }
         .container>div{
-            padding-left: 20px;
+            display: block;
+           padding: 20px;
+           border-bottom: 6px solid white;
+           background-color: rgba(84, 82, 82, 0.5);
+            color: white;
+            font-size: 20px;
+
+        }
+        .container>div:hover{
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .bottom{
+            position: fixed;
+            bottom: 0;
+            left: 0;
         }
     </style>
 </head>
 <body>
-
+    <a class="menu">☰</a>
     <div class="container">
+        
         <div>HOME</div>
         <div>ABOUT US</div>
         <div>CONTACT</div>
         <div>SLIDE</div>
     </div>
-    <button>TOGGLE</button>
     <script>
         $(document).ready(function(){
-            $("button").click(function(){
+            $(".menu").click(function(){
                 $(".container").slideToggle();
+                $(".menu").text()=='☰' ? $(".menu").text("✖") : $(".menu").text("☰");
             })
         })
     </script>
-    <br>
+    <div class="bottom">
+        <br>
     <a href="menubar.html">1. menubar html</a><br>
     <a href="index.html"> 2. Drag and drop</a><br>
     <a href="slide.html">3. Carousal(Slides)</a><br>
     <a href="nepaliTime.html">4. Nepali Date and time</a><br>
     <a href="ticTacToe.html">5. Tic Tac Toe</a><br>
     <a href="Quiz.html">6. Quiz file</a><br>
+    </div>
 </body>
 </html>
