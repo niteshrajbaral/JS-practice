@@ -5,21 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS SLIDE</title>
     <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            position: absolute;
+        }
         .container{
-            display: flex;
-            flex-wrap: nowrap;
+           display: block;
             height: 70vh;
-            align-items: center;
-            background-color: black;
+            width: 100vw;
             color: white;
+            object-fit: cover;
+            position: relative;
+            left: 0;
+            top:0;
+
         }
         .container img{
             width: 100%;
             height: 70vh;
         }
+        .left,.right{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 0;
+            bottom:0;
+            background-color: rgba(251, 242, 242, 0.867);
+            font-size: 40px;
+            width: 40px;
+            transition: background-color 0.5s;
+            position: absolute;
+        }
         .left{
-            float: left;
-            font-size: 70px;
+            left: 0px;
+        }
+        .right{
+            right: 0;
 
         }
         .slide{
@@ -27,10 +50,37 @@
             height: 70vh;
             background-color: red;
         }
-        .right{
-            float: right;
-            font-size: 70px;
-    
+        
+        .left:hover,.right:hover{
+            background-color: rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+        }
+
+        .dot{
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .dot1,.dot2,.dot3,.dot4{
+            height: 10px;
+            width: 10px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+            transition: background-color 0.5s;
+            
+        }
+        .menus{
+           position: relative;
+           display: block;
+
+        }
+        .active{
+            background-color: #717171;
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -39,9 +89,16 @@
 
 <body>
     <div class="container">
-        <div class="left"><b><</b></div>
+        <a class="left" >&#10094;</a>
+  
         <div class="slide"><img class="slideImg" src="img1.JPG" alt="img1"></div>
-        <div class="right"><b>></b></div>
+        <a class="right">&#10095;</a>
+        <div class="dot">
+            <a class="dot1"></a>
+            <a class="dot2"></a>
+            <a class="dot3"></a>
+            <a class="dot4"></a>
+        </div>
     </div>
     <script>
         let click=1;
@@ -51,36 +108,50 @@
                 click=click-1;
                 if(click==0){
                     click=4;
+                    $(".dot1").removeClass('active');
                 }
                 $(".slideImg").attr('src','img'+click+'.JPG');
+                $(".dot"+click).addClass('active');
+                $(".dot"+(click+1)).removeClass('active');
             });
             
             $(".right").click(function(){
                 click=click+1;
                 if(click==5){
                     click=1;
+                    $(".dot4").removeClass('active');
+
                 }
                 $(".slideImg").attr('src','img'+click+'.JPG');
+                $(".dot"+click).addClass('active');
+                $(".dot"+(click-1)).removeClass('active');
+
             });
             setInterval(clickRight,3000);
             function clickRight(){
                 click=click+1;
                 if(click==5){
                     click=1;
+                    $(".dot4").removeClass('active');
+
                 }
                 $(".slideImg").attr('src','img'+click+'.JPG');
+                $(".dot"+click).addClass('active');
+                $(".dot"+(click-1)).removeClass('active');
             };
         });
         
         
     </script>
-    <br>
+    <div class="menus">
+        <br>
     <a href="menubar.html">1. menubar html</a><br>
     <a href="index.html"> 2. Drag and drop</a><br>
     <a href="slide.html">3. Carousal(Slides)</a><br>
     <a href="nepaliTime.html">4. Nepali Date and time</a><br>
     <a href="ticTacToe.html">5. Tic Tac Toe</a><br>
     <a href="Quiz.html">6. Quiz file</a><br>
+    </div>
 </body>
 
 </html>
